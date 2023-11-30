@@ -28,7 +28,7 @@ namespace StatistiqueFoot.Models
             List<Equipe> listeEquipe = new  List<Equipe>();
             try {
                 connexion.connection.Open();
-                    string requet = "select * from Equipe";
+                    string requet = "select * from equipe";
                     SqlCommand command = new SqlCommand(requet, connexion.connection);
                     SqlDataReader dataReader = command.ExecuteReader();
                     while (dataReader.Read())
@@ -53,7 +53,7 @@ namespace StatistiqueFoot.Models
             Connexion connexion = new Connexion();
             try {
                 connexion.connection.Open();
-                    string requet = "insert into Equipe (nom) VALUES ('" + nom + "')";
+                    string requet = "insert into equipe (nom) VALUES ('" + nom + "')";
                     SqlCommand command = new SqlCommand(requet, connexion.connection);
                     command.ExecuteReader();
                     connexion.connection.Close();                

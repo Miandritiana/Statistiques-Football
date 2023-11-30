@@ -28,7 +28,7 @@ namespace StatistiqueFoot.Models
             List<Competition> listeCompetition = new  List<Competition>();
             try {
                 connexion.connection.Open();
-                    string requet = "select * from Competition";
+                    string requet = "select * from competition";
                     SqlCommand command = new SqlCommand(requet, connexion.connection);
                     SqlDataReader dataReader = command.ExecuteReader();
                     while (dataReader.Read())
@@ -53,7 +53,7 @@ namespace StatistiqueFoot.Models
             Connexion connexion = new Connexion();
             try {
                 connexion.connection.Open();
-                    string requet = "insert into Competition (nom) VALUES ('" + nom + "')";
+                    string requet = "insert into competition (nom) VALUES ('" + nom + "')";
                     SqlCommand command = new SqlCommand(requet, connexion.connection);
                     command.ExecuteReader();
                     connexion.connection.Close();                

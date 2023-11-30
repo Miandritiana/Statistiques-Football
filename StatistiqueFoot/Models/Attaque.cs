@@ -8,7 +8,7 @@ namespace StatistiqueFoot.Models
        
 
         public String idAttaque { get; set; }
-        public String idEquipe { get; set; }
+        public String idCE { get; set; }
       
         public Decimal tirs_pm {get; set;}
         public Decimal tirs_CA_pm {get; set;}
@@ -20,10 +20,10 @@ namespace StatistiqueFoot.Models
         {
         }
 
-        public Attaque(String idAttaque, String idEquipe,decimal tirs_pm,decimal tirs_CA_pm,decimal dribbles_pm,decimal faute_subies_pm,decimal note,String idType)
+        public Attaque(String idAttaque, String idCE,decimal tirs_pm,decimal tirs_CA_pm,decimal dribbles_pm,decimal faute_subies_pm,decimal note,String idType)
         {
             this.idAttaque = idAttaque;
-            this.idEquipe = idEquipe;
+            this.idCE = idCE;
             this.tirs_pm = tirs_pm;
             this.tirs_CA_pm = tirs_CA_pm;
             this.dribbles_pm = dribbles_pm;
@@ -40,13 +40,13 @@ namespace StatistiqueFoot.Models
             List<Attaque> listeAttaque = new  List<Attaque>();
             try {
                 connexion.connection.Open();
-                    string requet = "select * from Attaque";
+                    string requet = "select * from attaque";
                     SqlCommand command = new SqlCommand(requet, connexion.connection);
                     SqlDataReader dataReader = command.ExecuteReader();
                     while (dataReader.Read())
                     {
                         String idAttaque = dataReader.GetString(0);
-                        String idEquipe = dataReader.GetString(1);
+                        String idCE = dataReader.GetString(1);
                         Decimal tirs_pm = dataReader.GetDecimal(2);
                         Decimal tirs_CA_pm = dataReader.GetDecimal(3);
                         Decimal dribbles_pm = dataReader.GetDecimal(4);
@@ -54,7 +54,7 @@ namespace StatistiqueFoot.Models
                         Decimal note = dataReader.GetDecimal(6);
                         String idType = dataReader.GetString(7);
                       
-                        Attaque Attaque = new Attaque(idAttaque,idEquipe,tirs_pm,tirs_CA_pm,dribbles_pm,faute_subies_pm,note,idType);
+                        Attaque Attaque = new Attaque(idAttaque,idCE,tirs_pm,tirs_CA_pm,dribbles_pm,faute_subies_pm,note,idType);
                         listeAttaque.Add(Attaque);
                     }
                     dataReader.Close();
@@ -71,7 +71,7 @@ namespace StatistiqueFoot.Models
             Connexion connexion = new Connexion();
             try {
                 connexion.connection.Open();
-                    string requet = "insert into Attaque (idEquipe,tirs_pm,tirs_CA_pm,dribbles_pm,faute_subies_pm,note,idType) VALUES ('" + idEquipe + "','" + tirs_pm + "','" + tirs_CA_pm + "','" + dribbles_pm + "','" + faute_subies_pm + "','" + note + "','" + idType + "')";
+                    string requet = "insert into attaque (idCE,tirs_pm,tirs_CA_pm,dribbles_pm,faute_subies_pm,note,idType) VALUES ('" + idCE + "','" + tirs_pm + "','" + tirs_CA_pm + "','" + dribbles_pm + "','" + faute_subies_pm + "','" + note + "','" + idType + "')";
                     SqlCommand command = new SqlCommand(requet, connexion.connection);
                     command.ExecuteReader();
                     connexion.connection.Close();                
