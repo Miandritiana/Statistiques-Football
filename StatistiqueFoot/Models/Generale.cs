@@ -8,27 +8,29 @@ namespace StatistiqueFoot.Models
        
 
         public String idGenerale { get; set; }
-        public String idEquipe { get; set; }
+        public String idCE { get; set; }
       
         public Int32 buts {get; set;}
-        public Decimal tirs_pm {get; set;}
-        public Decimal discipline {get; set;}
-        public Decimal possession {get; set;}
-        public Decimal passesReussies {get; set;}
-        public Decimal aeriensGagnes {get; set;}
-        public Decimal note {get; set;}
+        public Double tirs_pm {get; set;}
+        public Int32 disciplineJaune {get; set;}
+        public Int32 disciplineRouge {get; set;}
+        public Double possession {get; set;}
+        public Double passesReussies {get; set;}
+        public Double aeriensGagnes {get; set;}
+        public Double note {get; set;}
         public String idType {get; set;}
          public Generale()
         {
         }
 
-        public Generale(String idGenerale,String idEquipe, Int32 buts,Decimal tirs_pm,Decimal discipline,Decimal possession,Decimal passesReussies,Decimal aeriensGagnes,decimal note,String idType)
+        public Generale(String idGenerale,String idCE, Int32 buts,Double tirs_pm,Int32 disciplineJaune,Int32 disciplineRouge,Double possession,Double passesReussies,Double aeriensGagnes,Double note,String idType)
         {
             this.idGenerale = idGenerale;
-            this.idEquipe = idEquipe;
+            this.idCE = idCE;
             this.buts = buts;
             this.tirs_pm = tirs_pm;
-            this.discipline = discipline;
+            this.disciplineJaune = disciplineJaune;
+            this.disciplineRouge = disciplineRouge;
             this.possession = possession;
             this.passesReussies = passesReussies;
             this.aeriensGagnes = aeriensGagnes;
@@ -44,23 +46,24 @@ namespace StatistiqueFoot.Models
             List<Generale> listeGenerale = new  List<Generale>();
             try {
                 connexion.connection.Open();
-                    string requet = "select * from Generale";
+                    string requet = "select * from generale";
                     SqlCommand command = new SqlCommand(requet, connexion.connection);
                     SqlDataReader dataReader = command.ExecuteReader();
                     while (dataReader.Read())
                     {
                         String idGenerale = dataReader.GetString(0);
-                        String idEquipe = dataReader.GetString(1);
+                        String idCE = dataReader.GetString(1);
                         Int32 buts = dataReader.GetInt32(2);
-                        Decimal tirs_pm = dataReader.GetDecimal(2);
-                        Decimal discipline = dataReader.GetDecimal(3);
-                        Decimal possession   = dataReader.GetDecimal(4);
-                        Decimal passesReussies = dataReader.GetDecimal(5);
-                        Decimal aeriensGagnes = dataReader.GetDecimal(6);
-                        Decimal note = dataReader.GetDecimal(7);
-                        String idType = dataReader.GetString(8);
+                        Double tirs_pm = dataReader.GetDouble(3);
+                        Int32 disciplineJaune = dataReader.GetInt32(4);
+                        Int32 disciplineRouge = dataReader.GetInt32(5);
+                        Double possession   = dataReader.GetDouble(6);
+                        Double passesReussies = dataReader.GetDouble(7);
+                        Double aeriensGagnes = dataReader.GetDouble(8);
+                        Double note = dataReader.GetDouble(9);
+                        String idType = dataReader.GetString(10);
                       
-                        Generale Generale = new Generale(idGenerale,idEquipe,buts,tirs_pm,discipline,possession,passesReussies,aeriensGagnes,note,idType);
+                        Generale Generale = new Generale(idGenerale,idCE,buts,tirs_pm,disciplineJaune,disciplineRouge,possession,passesReussies,aeriensGagnes,note,idType);
                         listeGenerale.Add(Generale);
                     }
                     dataReader.Close();
@@ -77,7 +80,7 @@ namespace StatistiqueFoot.Models
             Connexion connexion = new Connexion();
             try {
                 connexion.connection.Open();
-                    string requet = "insert into Generale (idEquipe,buts,tirs_pm,discipline,possession,passesReussies,aeriensGagnes,note,idType) VALUES ('" + idEquipe + "','" + buts + "','" + tirs_pm + "','" + discipline + "','" + possession + "','" + passesReussies + "','" + aeriensGagnes + "','" + note + "','" + idType + "')";
+                    string requet = "insert into generale (idCE,buts,tirs_pm,disciplineJaune,disciplineRouge,possession,passesReussies,aeriensGagnes,note,idType) VALUES ('" + idCE + "','" + buts + "','" + tirs_pm + "','" + disciplineJaune + "','" + disciplineRouge + "','" + possession + "','" + passesReussies + "','" + aeriensGagnes + "','" + note + "','" + idType + "')";
                     SqlCommand command = new SqlCommand(requet, connexion.connection);
                     command.ExecuteReader();
                     connexion.connection.Close();                
