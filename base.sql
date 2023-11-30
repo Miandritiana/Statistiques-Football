@@ -66,6 +66,10 @@ values
     ('competition5', 'equipe16'),
     ('competition3', 'equipe17');
 
+select idCE, e.nom, c.nom from competitionEquipe ce
+    join competition c on c.idCompetition = ce.idCompetition
+    join equipe e on e.idEquipe = ce.idEquipe;
+
 create table type (
     idType AS ('type' + cast(id as varchar(10))) PERSISTED primary key,
     id int identity(1, 1),
@@ -73,13 +77,31 @@ create table type (
 );
 insert into type (nom)
 values
-    (''),
-    (''),
-    ('');
+    ('Generale'),
+    ('Domicile'),
+    ('Attaque');
+
+
+create table generale (
+    idGenerale varchar(10) primary key,
+    idCE varchar(10) references competitionEquipe(idCE),
+    buts int,
+    tirs_pm float,
+    disciplineJaune int,
+    disciplineRouge int,
+    possession float,
+    passesReussies float,
+    aeriensGagnes float,
+    note float,
+    idType varchar(10) references type(idType)
+);
+insert into generale (idCE, buts, tirs_pm, disciplineJaune, disciplineRouge, possession, passesReussies, aeriensGagnes, note, idType)
+values
+    ('ce1', 43, 19.9, 17, 1, 62.9, 88.8, 12.8, 7.16);
 
 create table defense (
     idDefense varchar(10) primary key,
-    idEquipe varchar(10) references equipe(idEquipe),
+    idCE varchar(10) references competitionEquipe(idCE),
     tirs_pm float,
     tacles_pm float,
     interceptions_pm float,
@@ -91,24 +113,11 @@ create table defense (
 
 create table attaque (
     idAttaque varchar(10) primary key,
-    idEquipe varchar(10) references equipe(idEquipe),
+    idCE varchar(10) references competitionEquipe(idCE),
     tirs_pm float,
     tirs_CA_pm float,
     dribbles_pm float,
     fautes_subies_pm float,
-    note float,
-    idType varchar(10) references type(idType)
-);
-
-create table generale (
-    idGenerale varchar(10) primary key,
-    idEquipe varchar(10) references equipe(idEquipe),
-    buts int,
-    tirs_pm float,
-    discipline float,
-    possession float,
-    passesReussies float,
-    aeriensGagnes float,
     note float,
     idType varchar(10) references type(idType)
 );
