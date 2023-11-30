@@ -3,32 +3,32 @@ using System.Data.SqlClient;
 
 namespace StatistiqueFoot.Models
 {
-    public class Equipe
+    public class Type
     {
        
 
-        public String idEquipe { get; set; }
+        public String idType { get; set; }
         public String nom { get; set; }
       
 
-         public Equipe()
+         public Type()
         {
         }
 
-        public Equipe(String idE, String nom)
+        public Type(String idE, String nom)
         {
-            this.idEquipe = idE;
+            this.idType = idE;
             this.nom = nom;
            
         }
 
-        public List<Equipe> selectEquipe()
+        public List<Type> selectType()
         {
             Connexion connexion = new Connexion();
-            List<Equipe> listeEquipe = new  List<Equipe>();
+            List<Type> listeType = new  List<Type>();
             try {
                 connexion.connection.Open();
-                    string requet = "select * from Equipe";
+                    string requet = "select * from Type";
                     SqlCommand command = new SqlCommand(requet, connexion.connection);
                     SqlDataReader dataReader = command.ExecuteReader();
                     while (dataReader.Read())
@@ -36,24 +36,24 @@ namespace StatistiqueFoot.Models
                         string id = dataReader.GetString(0);
                         string nom = dataReader.GetString(1);
                       
-                        Equipe Equipe = new Equipe(id,nom);
-                        listeEquipe.Add(Equipe);
+                        Type Type = new Type(id,nom);
+                        listeType.Add(Type);
                     }
                     dataReader.Close();
                     connexion.connection.Close();                
-                Console.WriteLine(listeEquipe.Count());
+                Console.WriteLine(listeType.Count());
             }
             catch (System.Exception ex) {
                 Console.WriteLine($"Erreur: {ex}");
         
             }    
-            return listeEquipe;
+            return listeType;
         }
-        public void insertEquipe() {
+        public void insertType() {
             Connexion connexion = new Connexion();
             try {
                 connexion.connection.Open();
-                    string requet = "insert into Equipe (nom) VALUES ('" + nom + "')";
+                    string requet = "insert into Type (nom) VALUES ('" + nom + "')";
                     SqlCommand command = new SqlCommand(requet, connexion.connection);
                     command.ExecuteReader();
                     connexion.connection.Close();                

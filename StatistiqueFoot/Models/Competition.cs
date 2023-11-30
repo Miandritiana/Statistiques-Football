@@ -3,32 +3,32 @@ using System.Data.SqlClient;
 
 namespace StatistiqueFoot.Models
 {
-    public class Equipe
+    public class Competition
     {
        
 
+        public String idCompetition { get; set; }
         public String idEquipe { get; set; }
-        public String nom { get; set; }
       
 
-         public Equipe()
+         public Competition()
         {
         }
 
-        public Equipe(String idE, String nom)
+        public Competition(String idCompetition, String idEquipe)
         {
-            this.idEquipe = idE;
-            this.nom = nom;
+            this.idCompetition = idCompetition;
+            this.idEquipe = idEquipe;
            
         }
 
-        public List<Equipe> selectEquipe()
+        public List<Competition> selectCompetition()
         {
             Connexion connexion = new Connexion();
-            List<Equipe> listeEquipe = new  List<Equipe>();
+            List<Competition> listeCompetition = new  List<Competition>();
             try {
                 connexion.connection.Open();
-                    string requet = "select * from Equipe";
+                    string requet = "select * from Competition";
                     SqlCommand command = new SqlCommand(requet, connexion.connection);
                     SqlDataReader dataReader = command.ExecuteReader();
                     while (dataReader.Read())
@@ -36,24 +36,24 @@ namespace StatistiqueFoot.Models
                         string id = dataReader.GetString(0);
                         string nom = dataReader.GetString(1);
                       
-                        Equipe Equipe = new Equipe(id,nom);
-                        listeEquipe.Add(Equipe);
+                        Competition Competition = new Competition(id,nom);
+                        listeCompetition.Add(Competition);
                     }
                     dataReader.Close();
                     connexion.connection.Close();                
-                Console.WriteLine(listeEquipe.Count());
+                Console.WriteLine(listeCompetition.Count());
             }
             catch (System.Exception ex) {
                 Console.WriteLine($"Erreur: {ex}");
         
             }    
-            return listeEquipe;
+            return listeCompetition;
         }
-        public void insertEquipe() {
+        public void insertCompetition() {
             Connexion connexion = new Connexion();
             try {
                 connexion.connection.Open();
-                    string requet = "insert into Equipe (nom) VALUES ('" + nom + "')";
+                    string requet = "insert into Competition (idEquipe) VALUES ('" + idEquipe + "')";
                     SqlCommand command = new SqlCommand(requet, connexion.connection);
                     command.ExecuteReader();
                     connexion.connection.Close();                
