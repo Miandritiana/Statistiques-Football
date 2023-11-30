@@ -17,7 +17,7 @@ namespace StatistiqueFoot.Controllers
         }
 
         [HttpGet]
-        [Route("ViewAttaque")]
+        [Route("ViewAttaques")]
         public List<ViewAttaque> Get()
         {
             ViewAttaque def = new ViewAttaque();

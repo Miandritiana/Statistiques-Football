@@ -17,7 +17,7 @@ namespace StatistiqueFoot.Controllers
         }
 
         [HttpGet]
-        [Route("ViewGenerale")]
+        [Route("ViewGenerales")]
         public List<ViewGenerale> Get()
         {
             ViewGenerale def = new ViewGenerale();

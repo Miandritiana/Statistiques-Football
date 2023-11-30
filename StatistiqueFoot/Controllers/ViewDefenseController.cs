@@ -17,7 +17,7 @@ namespace StatistiqueFoot.Controllers
         }
 
         [HttpGet]
-        [Route("ViewDefense")]
+        [Route("ViewDefenses")]
         public List<ViewDefense> Get()
         {
             ViewDefense def = new ViewDefense();

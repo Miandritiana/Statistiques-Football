@@ -919,19 +919,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Henintsoa Ram\\.nuget\\packages\\": {}
+    "C:\\Users\\ITU\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Bitnami\\tomcatstack-10.0.7-0\\apache-tomcat\\webapps\\Statistiques-Football\\StatistiqueFoot\\StatistiqueFoot.csproj",
+      "projectUniqueName": "D:\\L3\\S5\\Programmation et Design\\Statistiques-Football\\StatistiqueFoot\\StatistiqueFoot.csproj",
       "projectName": "StatistiqueFoot",
-      "projectPath": "C:\\Bitnami\\tomcatstack-10.0.7-0\\apache-tomcat\\webapps\\Statistiques-Football\\StatistiqueFoot\\StatistiqueFoot.csproj",
-      "packagesPath": "C:\\Users\\Henintsoa Ram\\.nuget\\packages\\",
-      "outputPath": "C:\\Bitnami\\tomcatstack-10.0.7-0\\apache-tomcat\\webapps\\Statistiques-Football\\StatistiqueFoot\\obj\\",
+      "projectPath": "D:\\L3\\S5\\Programmation et Design\\Statistiques-Football\\StatistiqueFoot\\StatistiqueFoot.csproj",
+      "packagesPath": "C:\\Users\\ITU\\.nuget\\packages\\",
+      "outputPath": "D:\\L3\\S5\\Programmation et Design\\Statistiques-Football\\StatistiqueFoot\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Henintsoa Ram\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\ITU\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net7.0"
