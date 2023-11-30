@@ -165,3 +165,29 @@ WITH (
     faute_pm float '$.yellowCard',
     rating float '$.rating'
 );
+
+
+INSERT INTO TeamStats (teamName)
+VALUES 
+    ( 'Bayern Munich'),
+    ( 'Paris Saint-Germain'),
+    ( 'Bayer Leverkusen'),
+    ( 'Manchester City'),
+    ( 'Real Madrid'),
+    ( 'Inter'),
+    ( 'VfB Stuttgart'),
+    ( 'Atletico Madrid'),
+    ( 'Barcelona'),
+    ( 'Newcastle'),
+    ( 'Tottenham'),
+    ( 'Arsenal'),
+    ( 'Liverpool'),
+    ( 'Monaco'),
+    ( 'RB Leipzig'),
+    ( 'Napoli'),
+    ( 'Aston Villa'),
+    ( 'Juventus'),
+    ( 'Lille'),
+    ( 'Girona')
+    ;
+
