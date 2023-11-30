@@ -26,4 +26,5 @@ create table defense (
     faute_pm int,
     hors_jeu_pm int,
     note int,
+    idType varchar(10) references type(idType)
 );
