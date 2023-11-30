@@ -20,23 +20,23 @@ create table type (
 create table defense (
     idDefense varchar(10) primary key,
     idEquipe varchar(10) references equipe(idEquipe),
-    tirs_pm int,
-    tacles_pm int,
-    interceptions_pm int,
-    faute_pm int,
-    hors_jeu_pm int,
-    note int,
+    tirs_pm float,
+    tacles_pm float,
+    interceptions_pm float,
+    faute_pm float,
+    hors_jeu_pm float,
+    note float,
     idType varchar(10) references type(idType)
 );
 
 create table attaque (
     idAttaque varchar(10) primary key,
     idEquipe varchar(10) references equipe(idEquipe),
-    tirs_pm int,
-    tirs_CA_pm int,
-    dribbles_pm int,
-    fautes_subies_pm int,
-    note int,
+    tirs_pm float,
+    tirs_CA_pm float,
+    dribbles_pm float,
+    fautes_subies_pm float,
+    note float,
     idType varchar(10) references type(idType)
 );
 
@@ -44,11 +44,11 @@ create table generale (
     idGenerale varchar(10) primary key,
     idEquipe varchar(10) references equipe(idEquipe),
     buts int,
-    tirs_pm int,
-    discipline int,
-    possession int,
-    passesReussies int,
-    aeriensGagnes int,
-    note int,
+    tirs_pm float,
+    discipline float,
+    possession float,
+    passesReussies float,
+    aeriensGagnes float,
+    note float,
     idType varchar(10) references type(idType)
 );
