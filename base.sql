@@ -97,7 +97,11 @@ create table generale (
 );
 insert into generale (idCE, buts, tirs_pm, disciplineJaune, disciplineRouge, possession, passesReussies, aeriensGagnes, note, idType)
 values
-    ('ce1', 43, 19.9, 17, 1, 62.9, 88.8, 12.8, 7.16);
+    ('ce1', 43, 19.9, 17, 1, 62.9, 88.8, 12.8, 7.16),
+    ('ce2', 34, 16.9, 17, 0, 68.0, 90.6, 7, 7.04),
+    ('ce3', 37, 16.3, 23, 0, 60.6, 88.9, 9.6, 6.98),
+    ('ce4', 33, 16.5, 23, 2, 62.3, 90.2, 7.9, 6.96),
+    ('ce5', 31, 17.5, 26, 1, 57.3, 89.7, 8.4, 6.93);
 
 create table defense (
     idDefense varchar(10) primary key,
