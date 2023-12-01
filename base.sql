@@ -7,30 +7,29 @@ create table equipe (
     id int identity(1, 1),
     nom varchar(100)
 );
-
 insert into equipe (nom)
 values
-("Bayern Munich",
-"Paris Saint-Germain",
-"Bayer Leverkusen",
-"Manchester City",
-"Real Madrid",
-"Inter",
-"VfB Stuttgart",
-"Atletico Madrid",
-"Barcelona",
-"Newcastle",
-"Tottenham",
-"Arsenal",
-"Liverpool",
-"Monaco",
-"RB Leipzig",
-"Napoli",
-"Aston Villa",
-"Juventus",
-"Lille",
-"Gironad");
-
+    ('Bayern Munich'),
+    ('Paris Saint Germain'),
+    ('Bayer Leverkusen'),
+    ('Manchester City'),
+    ('Real Madrid'),
+    ('Inter'),
+    ('VfB Stuttgart'),
+    ('Atletico Madrid'),
+    ('Barcelona'),
+    ('Newcastle'),
+    ('Tottenham'),
+    ('Arsenal'),
+    ('Liverpool'),
+    ('Monaco'),
+    ('RB Leipzig'),
+    ('Napoli'),
+    ('Aston Villa'),
+    ('Everton'),
+    ('Brest'),
+    ('Valencia'),
+    ('Servilla');
 insert into equipe (nom)
 values
     ('Lorient'),
