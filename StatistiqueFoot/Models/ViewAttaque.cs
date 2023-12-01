@@ -74,7 +74,7 @@ namespace StatistiqueFoot.Models
             try
             {
                 connexion.connection.Open();
-                string requet = "SELECT * FROM ViewAttaque WHERE idType=@IdType";
+                string requet = "SELECT * FROM ViewAttaque WHERE idType=@IdType order by note desc";
                 SqlCommand command = new SqlCommand(requet, connexion.connection);
 
                 command.Parameters.AddWithValue("@IdType", idT);
