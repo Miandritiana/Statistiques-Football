@@ -1,11 +1,13 @@
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
+using Microsoft.Extensions.Logging;
 using StatistiqueFoot.Models;
 
 namespace StatistiqueFoot.Controllers
 {
     [ApiController]
-    [Route("ViewDefenseController")]
+    [Route("Defenses")]  // Modifiez le route au niveau de la classe
     [Produces("application/json")]
     public class ViewDefenseController : ControllerBase
     {
@@ -17,29 +19,18 @@ namespace StatistiqueFoot.Controllers
         }
 
         [HttpGet]
-        [Route("ViewDefenses")]
-        public List<ViewDefense> Get()
-        {
-            ViewDefense def = new ViewDefense();
-
-            List<ViewDefense> ViewDefenseData = def.selectViewDefense();
-
-            return ViewDefenseData;
-        }
-
-        [HttpGet]
-        [Route("ViewDefense/{idType}")]
-        public IActionResult GetByType(string idType)
+        [Route("generale")] 
+        public IActionResult GetGenerale()
         {
             try
             {
                 ViewDefense def = new ViewDefense();
 
-                var DefenseData = def.selectViewDefenseByType(idType);
+                var DefenseData = def.selectViewDefenseByType("type1");  
 
                 if (DefenseData.Count > 0)
                 {
-                    return Ok(DefenseData); 
+                    return Ok(DefenseData);
                 }
                 else
                 {
@@ -49,7 +40,58 @@ namespace StatistiqueFoot.Controllers
             catch (Exception ex)
             {
                 _logger.LogError($"Une erreur s'est produite : {ex}");
-                return StatusCode(500, "Erreur interne du serveur"); 
+                return StatusCode(500, "Erreur interne du serveur");
+            }
+        }
+
+        [HttpGet]
+        [Route("domicile")] 
+        public IActionResult GetDomicile()
+        {
+            try
+            {
+                ViewDefense def = new ViewDefense();
+
+                var DefenseData = def.selectViewDefenseByType("type2");  
+
+                if (DefenseData.Count > 0)
+                {
+                    return Ok(DefenseData);
+                }
+                else
+                {
+                    return NotFound();
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Une erreur s'est produite : {ex}");
+                return StatusCode(500, "Erreur interne du serveur");
+            }
+        }
+        [HttpGet]
+        [Route("exterieur")] 
+        public IActionResult GetExterieur()
+        {
+            try
+            {
+                ViewDefense def = new ViewDefense();
+
+                var DefenseData = def.selectViewDefenseByType("type3");  
+
+                if (DefenseData.Count > 0)
+                {
+                    return Ok(DefenseData);
+                }
+                else
+                {
+                    return NotFound();
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Une erreur s'est produite : {ex}");
+                return StatusCode(500, "Erreur interne du serveur");
             }
         }
     }

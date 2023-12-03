@@ -1,11 +1,13 @@
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
+using Microsoft.Extensions.Logging;
 using StatistiqueFoot.Models;
 
 namespace StatistiqueFoot.Controllers
 {
     [ApiController]
-    [Route("ViewGeneraleController")]
+    [Route("Generales")]  // Modifiez le route au niveau de la classe
     [Produces("application/json")]
     public class ViewGeneraleController : ControllerBase
     {
@@ -17,29 +19,18 @@ namespace StatistiqueFoot.Controllers
         }
 
         [HttpGet]
-        [Route("ViewGenerales")]
-        public List<ViewGenerale> Get()
-        {
-            ViewGenerale def = new ViewGenerale();
-
-            List<ViewGenerale> ViewGeneraleData = def.selectViewGenerale();
-
-            return ViewGeneraleData;
-        }
-
-        [HttpGet]
-        [Route("ViewGenerale/{idType}")]
-        public IActionResult GetByType(string idType)
+        [Route("generale")] 
+        public IActionResult GetGenerale()
         {
             try
             {
                 ViewGenerale def = new ViewGenerale();
 
-                var GeneraleData = def.selectViewGeneraleByType(idType);
+                var GeneraleData = def.selectViewGeneraleByType("type1");  
 
                 if (GeneraleData.Count > 0)
                 {
-                    return Ok(GeneraleData); 
+                    return Ok(GeneraleData);
                 }
                 else
                 {
@@ -49,7 +40,58 @@ namespace StatistiqueFoot.Controllers
             catch (Exception ex)
             {
                 _logger.LogError($"Une erreur s'est produite : {ex}");
-                return StatusCode(500, "Erreur interne du serveur"); 
+                return StatusCode(500, "Erreur interne du serveur");
+            }
+        }
+
+        [HttpGet]
+        [Route("domicile")] 
+        public IActionResult GetDomicile()
+        {
+            try
+            {
+                ViewGenerale def = new ViewGenerale();
+
+                var GeneraleData = def.selectViewGeneraleByType("type2");  
+
+                if (GeneraleData.Count > 0)
+                {
+                    return Ok(GeneraleData);
+                }
+                else
+                {
+                    return NotFound();
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Une erreur s'est produite : {ex}");
+                return StatusCode(500, "Erreur interne du serveur");
+            }
+        }
+        [HttpGet]
+        [Route("exterieur")] 
+        public IActionResult GetExterieur()
+        {
+            try
+            {
+                ViewGenerale def = new ViewGenerale();
+
+                var GeneraleData = def.selectViewGeneraleByType("type3");  
+
+                if (GeneraleData.Count > 0)
+                {
+                    return Ok(GeneraleData);
+                }
+                else
+                {
+                    return NotFound();
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Une erreur s'est produite : {ex}");
+                return StatusCode(500, "Erreur interne du serveur");
             }
         }
     }
